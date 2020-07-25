@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>imglist</title>
+		<link href="web_resources/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+		<script src="web_resources/bootstrap/js/jquery-3.4.0.min.js"></script>
+		<link href="web_resources/css/menu.css" rel="stylesheet"/>
+		<script type="text/javascript" src="web_resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="web_resources/js/jsrender.min.js"></script>
+	</head>
+	<body>
+		<div id="div_suspension">
+			<div id="div_suspension1">
+				<svg class="bi bi-caret-right" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="36" height="200">
+					<path fill-rule="evenodd" d="M6 12.796L11.481 8 6 3.204v9.592zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+				</svg>
+			</div>
+			<div id="div_suspension2">
+				<div class="btn-group-vertical text-center" style="height: 15.625rem;width: 10.25rem;">
+					<div type="button" class="btn btn-outline-secondary">
+						<a href="editor.html" class="nav-link" >生成器</a>
+					</div>
+					<div type="button" class="btn btn-outline-secondary">
+						<a href="admin.html" class="nav-link" >用户菜单</a>
+					</div>
+					<div type="button" class="btn btn-outline-secondary">
+						<a href="imgList.html" class="nav-link active" >图片列表</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mt-1">
+			<form>
+				<div class="form-group row">
+					<table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col">图片ID</th>
+					      <th scope="col">用户ID</th>
+					      <th scope="col">名称</th>
+					      <th scope="col">查看</th>
+						  <th scope="col">操作</th>
+					    </tr>
+					  </thead>
+					  <tbody id="table2">
+
+					  </tbody>
+					</table>
+				</div>
+			</form>
+		</div>
+
+	</body>
+	<script type="text/x-jsrender" id="tmp2">
+		{{for}}
+			<tr>
+			  <th scope="row">{{:id}}</th>
+			  <td>{{:userid}}</td>
+			  <td>{{:img}}</td>
+			  <td><button type="button" class="btn btn-outline-info" onclick="toimg({{:id}})">查看</button></td>
+			  <td><button type="button" class="btn btn-outline-danger" onclick="deletePhoto({{:id}})">删除</button></td>
+			</tr>
+		{{/for}}
+	</script>
+	<script src="web_resources/js/imgList.js"></script>
+</html>

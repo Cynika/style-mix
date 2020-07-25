@@ -1,0 +1,53 @@
+#div_suspension{
+	width: 200px;
+	height: 250px;
+	background-color:rgba(0,0,0,0.3);
+	position: absolute;
+	margin-top: 150px;
+	border-radius: 0 10px 10px 0;
+	margin-left: -164px;
+	z-index: 100;
+}
+
+#div_suspension:hover{
+	margin-left: 0px;
+	transition: margin-left 1.5s ;
+	-webkit-transition: margin-left 1.5s;
+}
+#div_suspension1{
+	float: right;
+	width: 36px;
+	height: 250px;
+	border-radius: 0 10px 10px 0;
+	background-color:rgba(255,255,255,0.5);
+	text-align: center;
+	line-height: 250px;
+	cursor: pointer;
+}
+.icon-suspension{
+	width: 1.5em;
+	height: 1.5em;
+}
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+.pic{
+	max-height: 12.5rem;
+}
+.pic img{
+	max-height: 12.5rem;
+	max-width: 12.5rem;
+}
+.del{
+	z-index: 100;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	line-height:10px;
+	text-align:center;
+	font-weight:bold;
+	cursor:pointer;
+	font-size:10px;
+	display: none;
+}

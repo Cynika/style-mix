@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>照片墙</title>
+    <link rel="stylesheet" type="text/css" href="web_resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="web_resources/css/menu.css">
+    <link rel="stylesheet" href="web_resources/css/picstyle.css">
+    <script type="text/javascript" src="web_resources/bootstrap/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="web_resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="web_resources/bootstrap/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="web_resources/bootstrap/js/jquery.form.js"></script>
+    <script type="text/javascript" src="web_resources/js/jsrender.min.js"></script>
+    <style type="text/css">
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="div_suspension">
+    <div id="div_suspension1">
+        <svg class="bi bi-caret-right" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+             width="36" height="200">
+            <path fill-rule="evenodd"
+                  d="M6 12.796L11.481 8 6 3.204v9.592zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+        </svg>
+    </div>
+    <div id="div_suspension2">
+        <div class="btn-group-vertical text-center" style="height: 15.625rem;width: 10.25rem;">
+            <div type="button" class="btn btn-outline-secondary">
+                <a href="editor.html" class="nav-link ">生成器</a>
+            </div>
+            <div type="button" class="btn btn-outline-secondary">
+                <a href="photowall.html" class="nav-link active">照片墙</a>
+            </div>
+            <div type="button" class="btn btn-outline-secondary admin">
+                <a href="admin.html" class="nav-link">管理员界面</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="row" id="wall">
+    </div>
+</div>
+<script type="text/x-jsrender" id="photo">
+        {{for}}
+            <div class="col-sm-3 entainner" ontouchstart="this.classList.toggle('hover');">
+                <div class="container">
+                    <div class="front">
+                       <img class="photo" id="photo{{:id}}" />
+                    </div>
+                    <div class="back">
+
+                        <p>{{:userid}}</p>
+                        <span>{{:desc}}</span>
+                        <img class="photo" style="display:none" alt="pic" onload="javaScript:backimg({{:id}});" />
+
+                    </div>
+                </div>
+            </div>
+        {{/for}}
+</script>
+<script type="text/javascript" src="web_resources/js/photowall.js"></script>
+</body>
+</html>

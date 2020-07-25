@@ -1,0 +1,10 @@
+body{
+	background-image: url(../img/starsea.jpg);
+	background-size: 120%;
+	background-repeat: no-repeat;
+}
+.page{
+	margin-top: 5%;
+	text-align: center;
+	font-family: "楷体";
+}

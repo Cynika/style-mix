@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>style-mix 用户登录</title>
+
+    <link rel="stylesheet" type="text/css" href="web_resources/bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="web_resources/bootstrap/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="web_resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="web_resources/bootstrap/js/jquery.cookie.js"></script>
+
+    <style>
+        .box {
+            width: 450px;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #FCFCFC;
+            border-radius: 10px;
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+            z_index: -1;
+        }
+
+
+        @media (max-width: 1024px) {
+            .box {
+                width: 80%;
+                padding-left: 20px;
+                padding-right: 20px;
+                top: 400px;
+                z-index: -100;
+                position: relative;
+
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">来自style-mix的消息</h5>
+            </div>
+            <div style="margin:20px 20px">
+                <img id="message_img" src="web_resources/img/loading.gif" class="rounded mx-auto d-block " alt=""
+                     width="128"
+                     height="128">
+            </div>
+            <div class="modal-body text-center" id="message_text">在这里添加一些文本</div>
+            <div class="modal-footer">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">style-mix</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="login.html">登录
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html">注册</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="box">
+        <form class="form-group" id="loginForm">
+            <div style="margin:20px 20px">
+                <h1  class="text-center">style-mix</h1>
+            </div>
+            <div class="form-group">
+                <label for="userName">用户名</label>
+                <input type="text" class="form-control" id="userName" aria-describedby="UserNameHelp"
+                       placeholder="用户名" name="userName">
+
+            </div>
+            <div class="form-group">
+                <label for="userPassword">密码</label>
+                <input type="password" class="form-control" id="userPassword" placeholder="密码"
+                       name="userPassword">
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">记住我</label>
+                <small id="tip" class="form-text text-muted"></small>
+            </div>
+
+            <div class="form-group ">
+                <input id="loginBtn" class="btn btn-primary btn-block" value="登录" type="button"/>
+                <hr class="my-4">
+                <small id="registerHelp" class="form-text text-muted" style="margin:10px 0px 10px 0px">还没有账号？现在注册吧！
+                </small>
+                <a class="btn btn-primary btn-block" id="register" href="register.html">注册</a>
+            </div>
+
+            <div class="alert" role="alert" id="loginResult">
+            </div>
+
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="web_resources/js/login.js"></script>
+</body>
+</html>

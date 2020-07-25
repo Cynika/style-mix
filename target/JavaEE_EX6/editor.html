@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>editor</title>
+
+    <link rel="stylesheet" type="text/css" href="web_resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="web_resources/bootstrap/css/bootstrap-slider.css">
+    <link rel="stylesheet" href="web_resources/css/menu.css">
+
+    <script type="text/javascript" src="web_resources/bootstrap/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="web_resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="web_resources/bootstrap/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="web_resources/bootstrap/js/jquery.form.js"></script>
+    <script type="text/javascript" src="web_resources/bootstrap/js/bootstrap-slider.min.js"></script>
+    <style type="text/css">
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="div_suspension">
+    <div id="div_suspension1">
+        <svg class="bi bi-caret-right" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="36" height="200">
+            <path fill-rule="evenodd" d="M6 12.796L11.481 8 6 3.204v9.592zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
+        </svg>
+    </div>
+    <div id="div_suspension2">
+        <div class="btn-group-vertical text-center" style="height: 15.625rem;width: 10.25rem;">
+            <div type="button" class="btn btn-outline-secondary">
+                <a href="editor.html" class="nav-link active" >生成器</a>
+            </div>
+            <div type="button" class="btn btn-outline-secondary">
+                <a href="photowall.html" class="nav-link" >照片墙</a>
+            </div>
+            <div type="button" class="btn btn-outline-secondary admin">
+                <a href="admin.html" class="nav-link" >管理员界面</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">来自style-mix的消息</h5>
+            </div>
+            <div style="margin:20px 20px">
+                <img id="message_img" src="web_resources/img/loading.gif" class="rounded mx-auto d-block " alt=""
+                     width="128"
+                     height="128">
+            </div>
+            <div class="modal-body text-center" id="message_text">在这里添加一些文本</div>
+            <div class="modal-footer" id="myModal_foot">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row p-1 m-auto shadow rounded">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>
+                            style-mix！<small>人脸混合生成器</small>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row shadow p-3 m-3 bg-white rounded">
+                <div class="col-md-5 shadow p-1 m-auto bg-white rounded">
+                    <h4 class="text-center">
+                        从第一张照片开始
+                    </h4>
+                    <div class="row shadow-sm p-1 m-1 bg-white rounded">
+                        <div class="col-md-6">
+                            <h6>
+                                第一步，上传正面照片
+                            </h6>
+                        </div>
+                        <div class="col-md-6">
+                            <form id="form1" method="post" enctype="multipart/form-data">
+                                <input type="file" name="file" id="file" onchange="fileUpload(1)"/>
+                                <input type="hidden" id="imageUrl" name="imageUrl" value=""/>
+                                <img id="imgSrc" style="width:200px;"/>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row shadow-sm p-1 m-1 bg-white rounded">
+                        <div class="col-md-6 shadow-sm">
+                            <img id="img1" alt="图像预览" src="" width="100" height="100" class="rounded"/>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>
+                                第二步，找到你的面部
+                            </h6>
+                            <button class="btn btn-primary btn-lg" type="button" id="aligned1" onclick="aligned(1)">对准
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row shadow-sm p-1 m-1 bg-white rounded">
+                        <div class="col-md-6">
+                            <h6 class="text-center">
+                                第三步，分析脸部特征<br>(时间可能较长)
+                            </h6>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-info btn-lg" type="button" id="latent1" onclick="latent(1)">特征化
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 shadow p-1 m-auto bg-white rounded">
+                    <h4 class="text-center">
+                        第二张照片开始
+                    </h4>
+                    <div class="row shadow-sm p-1 m-1 bg-white rounded">
+                        <div class="col-md-6">
+                            <h6>
+                                第一步，上传正面照片
+                            </h6>
+                        </div>
+                        <div class="col-md-6">
+                            <form id="form2" method="post" enctype="multipart/form-data">
+                                <input type="file" name="file" id="file2" onchange="fileUpload(2)"/>
+                                <input type="hidden" id="imageUrl2" name="imageUrl" value=""/>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row shadow-sm p-1 m-1 bg-white rounded">
+                        <div class="col-md-6 shadow-sm" width="100" height="100">
+                            <img id="img2" alt="图像预览" src="" width="100" height="100" class="rounded">
+                        </div>
+                        <div class="col-md-6">
+                            <h6>
+                                第二步，找到你的面部
+                            </h6>
+                            <button class="btn btn-primary btn-lg" type="button" id="aligned2" onclick="aligned(2)">对准
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row shadow-sm p-1 m-1 bg-white rounded">
+                        <div class="col-md-6">
+                            <h6 class="text-center">
+                                第三步，分析脸部特征<br>(时间可能较长)
+                            </h6>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-info btn-lg" type="button" id="latent2" onclick="latent(2)">特征化
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row shadow p-3 m-3 bg-white rounded">
+                <div class="col-md-6 p-3">
+                    <br>
+                    <h6>双脸混合偏向</h6>
+                    <input id="face" type="text" data-slider-value="300"/>
+                    <br>
+                    <h6>年龄</h6>
+                    <input id="age" type="text" data-slider-value="300"/>
+                    <br>
+                    <h6>性别特征</h6>
+                    <input id="gender" type="text" data-slider-value="300"/>
+                    <br>
+                    <h6>体型</h6>
+                    <input id="beauty" type="text" data-slider-value="300"/>
+                    <br>
+                    <h6>开心</h6>
+                    <input id="smile" type="text" data-slider-value="300"/>
+                    <br>
+                    <h6>角度</h6>
+                    <input id="angle" type="text" data-slider-value="300"/>
+                    <br>
+                </div>
+                <div class="col-md-6  shadow bg-white rounded" width="512" height="512">
+                    <img id="img3" alt="图像预览" src="" width="512" height="512" class="rounded"/>
+                </div>
+            </div>
+
+
+            <div class="row p-3 m-3 shadow rounded">
+                <div class="col-md-12">
+                    <div class="row  p-1 m-auto">
+                        <div class="col-md-10">
+                            <button class="btn btn-primary btn-lg" type="button" id="mix1" onclick="mix(1)">生成</button>
+                            <button class="btn btn-primary btn-lg" type="button" id="mix2" onclick="mix(2)">混合生成
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="web_resources/js/editor.js"></script>
+</body>
+</html>
