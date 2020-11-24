@@ -1,17 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="Style-mix:war exploded">
+  <artifact type="exploded-war" name="stylemix:war exploded">
     <output-path>$PROJECT_DIR$/target/JavaEE_EX6</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
-        <module>Style-mix</module>
+        <module>stylemix</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Style-mix" />
+          <element id="module-output" name="stylemix" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.47" />
@@ -53,7 +53,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/JavaEE_EX6/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="Style-mix/web/Web" />
+      <element id="javaee-facet-resources" facet="stylemix/web/Web" />
     </root>
   </artifact>
 </component>

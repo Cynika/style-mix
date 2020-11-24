@@ -31,7 +31,7 @@ public class PhotoController {
     @Resource(name = "photoService")
     IPhotoService photoService;
 
-    //
+    //分享图片
     @RequestMapping("/sharePhoto")
     @ResponseBody
     public JSONObject share_photo(HttpServletRequest request, @RequestParam("desc") String desc, HttpSession httpSession) throws IOException {
@@ -54,6 +54,7 @@ public class PhotoController {
         return back("1");
     }
 
+    //查询所有图片
     @RequestMapping("/queryAllPhoto")
     @ResponseBody
     public JSONObject query_AllPhoto(HttpServletRequest request, HttpSession httpSession) throws IOException {
@@ -61,6 +62,7 @@ public class PhotoController {
         return backArray(result);
     }
 
+    //删除图片
     @RequestMapping("/deletePhoto")
     @ResponseBody
     public JSONObject delete_Photo(HttpServletRequest request, @RequestParam("id") int id, HttpSession httpSession) throws IOException {
@@ -75,7 +77,7 @@ public class PhotoController {
             return back("0");
     }
 
-    //
+    //显示图片
     @RequestMapping("/pimg")
     @ResponseBody
     public JSONObject pimg(HttpServletRequest request, @RequestParam("photo") int imgid, HttpSession httpSession) throws IOException {

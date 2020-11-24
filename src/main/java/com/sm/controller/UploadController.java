@@ -2,7 +2,6 @@ package com.sm.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cmd.Exec;
-import com.sm.service.IUserService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,6 +81,7 @@ public class UploadController {
         return back("0");
     }
 
+    //显示图片
     @RequestMapping("/aimg")
     @ResponseBody
     public JSONObject aimg(HttpServletRequest request, @RequestParam("who") int who, HttpSession httpSession) throws IOException {

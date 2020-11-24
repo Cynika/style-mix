@@ -36,6 +36,7 @@ public class UserController {
         }
     }
 
+    //登陆用户
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
     @ResponseBody
     public void userLogin(@RequestParam(value = "userName") String userName,
@@ -52,7 +53,7 @@ public class UserController {
         writeJSON2Response(result, response);
     }
 
-
+    //注册用户
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
     @ResponseBody
     public void userRegister(@RequestBody User user, HttpServletResponse response) {
@@ -64,7 +65,7 @@ public class UserController {
         writeJSON2Response(result, response);
     }
 
-
+    //是否注册
     @RequestMapping(value = "/isRegistered", method = RequestMethod.POST)
     @ResponseBody
     public void isRegistered(String name, HttpServletResponse response) {
@@ -79,6 +80,7 @@ public class UserController {
         writeJSON2Response(result, response);
     }
 
+    //冻结用户
     @RequestMapping("/FreezeUserById")
     @ResponseBody
     public JSONObject Freeze_UserById(HttpServletRequest request, @RequestParam("who") int id, HttpSession httpSession) throws IOException {
@@ -93,6 +95,7 @@ public class UserController {
             return back("0");
     }
 
+    //激活用户
     @RequestMapping("/ActiveUserById")
     @ResponseBody
     public JSONObject Active_UserById(HttpServletRequest request, @RequestParam("id") int id, HttpSession httpSession) throws IOException {
@@ -107,6 +110,7 @@ public class UserController {
             return back("0");
     }
 
+    //查询用户
     @RequestMapping("/queryAllUsers")
     @ResponseBody
     public JSONObject query_AllUsers(HttpServletRequest request, HttpSession httpSession, Map<String, Object> map) throws IOException {

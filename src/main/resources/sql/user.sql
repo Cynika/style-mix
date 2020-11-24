@@ -45,7 +45,7 @@ WHERE id = 1;
 
 UPDATE user
 SET p1_npy_state = 3
-WHERE id = 1
+WHERE id = 1;
 
 select * from user
 
